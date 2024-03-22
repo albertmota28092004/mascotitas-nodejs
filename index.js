@@ -2,7 +2,6 @@ const exp = require('express');
 const logger = require('morgan')
 const app = exp();
 let modeloProducto = require('./backend/models/productos.model');
-const { rmSync } = require('fs');
 
 
 app.use(logger('dev'));
