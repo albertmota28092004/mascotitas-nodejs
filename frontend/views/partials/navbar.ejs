@@ -1,0 +1,79 @@
+<body>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg bg-white sticky-top">
+            <div class="container">
+                <a class="logo_navbar navbar-brand" href="/index"> <img src="img/logo_mascotitas.png" width="150"
+                        height="45" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/catalogo">Catálogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/categorias">Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/citas">Citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/servicios">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/pedidos">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/productos">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/usuarios">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="">Agendar cita</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="">Catalogo</a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-right: -100px">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link mr-5 position-relative" type="button" aria-controls="offcanvasRight"
+                                style="margin-top: 3px;" onclick="ver_carrito();">
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    <span class="visually-hidden">productos</span>
+                                </span>
+                                <i style="color: black !important; font-size: 30px; " class="bi bi-cart4"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown dropstart" style="">
+                            <a id="barra" class="navbar-brand" href="#" role="button" data-bs-toggle="dropdown"
+                                style="z-index:1; margin-left: 20px;" width="100px">
+                                <!--<img src="" width="70px" height="70px" style="border-radius:100px; ">-->
+                            </a>
+                            <ul class="dropdown-menu menu_usuario">
+                                <li>
+                                    <h6 style="margin-left: 10px;"></h6>
+                                </li>
+                                <li>
+                                    <h6 style="font-size: 20px; text-align: center;"></h6>
+                                </li>
+                                <li><a href="" class="btn btn-success botones_usuario">Mis compras</a></li>
+                                <li><a href="" class="btn btn-success botones_usuario">Mis citas</a></li>
+                                <li><a href="" class="btn btn-success botones_usuario">Ver perfil</a></li>
+                                <li><a href="" class="btn btn-success botones_usuario">Editar usuario</a></li>
+                                <li><a href="" class="btn btn-success botones_usuario">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--Final navbar-->
+    </header>

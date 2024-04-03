@@ -1,8 +1,18 @@
 const express = require('express')
 const router = express.Router()
-let modeloProducto = require('./backend/models/productos.model');
+let modeloProducto = require('../models/productos.model');
 
-router.get('/listarProductos', async (req, res) => {
+router.get('/', (req, res) => {
+    let titulo = '+Cotitas - Index';
+    res.render('inicio', {
+        "titulo": titulo,
+        "session": req.session.usuario
+    });
+});
+
+/* Operaciones CRUD */ 
+
+router.get('/productos', async (req, res) => {
     let listadoProductos = await modeloProducto.find();
     if(listadoProductos)
         res.status(200).json(listadoProductos);
@@ -10,7 +20,7 @@ router.get('/listarProductos', async (req, res) => {
         res.status(404).json({error: "No se encontraron productos"});
 });
 
-router.get('/buscarProducto/:ref', async (req, res) => {
+router.get('/productos/:ref', async (req, res) => {
     let productoEncontrado = await modeloProducto.findOne({referencia:req.params.ref});
     if(productoEncontrado)
         res.status(200).json(productoEncontrado);
@@ -18,7 +28,7 @@ router.get('/buscarProducto/:ref', async (req, res) => {
         res.status(404).json({error: "Producto no encontrado"});
 });
 
-router.post('/insertarProducto', async (req, res) => {
+router.post('/productos', async (req, res) => {
     const nuevoProducto = {
         referencia: 1000,
         nombre: "Producto 1",
@@ -36,9 +46,9 @@ router.post('/insertarProducto', async (req, res) => {
         res.status(404).json({"mensaje": "Se presentó un error"})
 });
 
-router.put('/editarProducto', async (req,res) => {
+router.put('/productos/:ref', async (req,res) => {
     const productoEditado = {
-        referencia: 1001,
+        referencia: req.params.ref,
         nombre: "Producto 1",
         descripcion: "Este es un producto 1",
         precio: 50000,
@@ -47,22 +57,23 @@ router.put('/editarProducto', async (req,res) => {
         habilitado: true,
     };
 
-    let Actualizacion = await modeloProducto.findOneAndUpdate({referencia:1000}, productoEditado);
+    let Actualizacion = await modeloProducto.findOneAndUpdate({referencia:req.params.ref}, productoEditado);
     if(Actualizacion)
-        res.status(200).json({"mensaje": "registro exitoso"});
+        res.status(200).json({"mensaje": "Actualización exitosa!"});
     else
-        res.status(404).json({"mensaje": "Se presentó un error"})
+        res.status(404).json({"mensaje": "Se presentó un error"});
 })
 
-router.delete('/eliminarProducto:id', async (req, res) => {
-    console.log(req.params.id, req.body.refereciaProducto)
-    let eliminacion = await modeloProducto.findOneAndUpdate({referencia:req.params.id})
+router.delete('/productos/:ref', async (req, res) => {
+    console.log(req.params.ref)
+    let eliminacion = await modeloProducto.findOneAndDelete({referencia:req.params.ref})
     if (eliminacion)
         res.status(200).json({"mensaje":"Eliminación exitosa!"})
     else
         res.status(404).json({"mensaje":"Se presentó un error"})
 }) 
 
+module.exports = router
 
 
 
