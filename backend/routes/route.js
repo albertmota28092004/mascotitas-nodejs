@@ -4,18 +4,23 @@ let modeloProducto = require('../models/productos.model');
 
 router.get('/', (req, res) => {
     let titulo = '+Cotitas - Index';
-    res.render('inicio', {
-        "titulo": titulo,
-        "session": req.session.usuario
+    res.render('pages/inicio', {
+        "titulo": titulo
     });
 });
+
 
 /* Operaciones CRUD */ 
 
 router.get('/productos', async (req, res) => {
+    let titulo = '+Cotitas - Productos';
     let listadoProductos = await modeloProducto.find();
+    console.log(listadoProductos)
     if(listadoProductos)
-        res.status(200).json(listadoProductos);
+        res.render('pages/listar_productos', {
+            "titulo": titulo,
+            "listadoProductos": listadoProductos
+    })
     else
         res.status(404).json({error: "No se encontraron productos"});
 });
@@ -28,23 +33,7 @@ router.get('/productos/:ref', async (req, res) => {
         res.status(404).json({error: "Producto no encontrado"});
 });
 
-router.post('/productos', async (req, res) => {
-    const nuevoProducto = {
-        referencia: 1000,
-        nombre: "Producto 1",
-        descripcion: "Este es un producto 1",
-        precio: 50000,
-        stock: 100,
-        imagen: "imagen.png",
-        habilitado: true,
-    };
 
-    let Insercion = await modeloProducto.create(nuevoProducto);
-    if(Insercion)
-        res.status(200).json({"mensaje": "registro exitoso"});
-    else
-        res.status(404).json({"mensaje": "Se presentó un error"})
-});
 
 router.put('/productos/:ref', async (req,res) => {
     const productoEditado = {
