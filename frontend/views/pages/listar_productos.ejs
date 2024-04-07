@@ -5,6 +5,13 @@
             <%=titulo %>
         </title>
 
+        <% if (locals.successMessage) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" >
+                <%= locals.successMessage %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+
         <h1>
             Productos
         </h1>
@@ -103,3 +110,5 @@
                 <script>
                     let table = new DataTable('#example');
                 </script>
+                
+    <%- include('../partials/footer'); %>

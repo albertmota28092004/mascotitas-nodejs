@@ -33,11 +33,16 @@ app.post('/productos', async (req, res) => {
         imagen:req.body.imagenProducto,
         habilitado:true
     };
-    
 
     let Insercion = await modeloProducto.create(nuevoProducto);
-    if(Insercion)
-        res.status(200).json({"mensaje": "registro exitoso"});
-    else
+    if(Insercion) {
+        let titulo = '+Cotitas - Productos';
+        let listadoProductos = await modeloProducto.find();
+        res.locals.successMessage = 'Producto registrado exitosamente';
+        res.render('pages/listar_productos', {
+            "titulo": titulo,
+            "listadoProductos": listadoProductos
+    });
+    } else
         res.status(404).json({"mensaje": "Se presentó un error"})
 });
