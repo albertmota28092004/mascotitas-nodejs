@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
     });
 });
 
-
 /* Operaciones CRUD */ 
 
 router.get('/productos', async (req, res) => {
@@ -32,7 +31,6 @@ router.get('/productos/:ref', async (req, res) => {
     else
         res.status(404).json({error: "Producto no encontrado"});
 });
-
 
 
 router.put('/productos/:ref', async (req,res) => {

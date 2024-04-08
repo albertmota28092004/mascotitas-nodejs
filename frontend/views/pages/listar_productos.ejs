@@ -73,6 +73,7 @@
                             <th scope="col">Stock</th>
                             <th scope="col">Imagen</th>
                             <th scope="col">Habilitado</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,6 +102,14 @@
                                 </td>
                                 <td>
                                     <%= p.habilitado %>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger">
+                                        <i class="bi bi-x-lg"></i>
+                                    </a>
                                 </td>
                             </tr>
                             <%})%>
