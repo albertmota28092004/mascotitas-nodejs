@@ -1,19 +1,8 @@
 [
   {
-    "referencia": "123456",
-    "nombre": "pantalon",
-    "descripcion": "corto",
-    "precio": 54000,
-    "stock": 5,
-    "imagen": "no",
-    "habilitado": true
-  },
-  {
-    "referencia": "123456",
-    "nombre": "pantalon",
-    "descripcion": "corto",
-    "precio": 54000,
-    "stock": 5,
-    "imagen": "no",
-    "habilitado": true
-  }]
+    "cliente": "6619a98afea86873d0790177",
+    "fechaHora": "2020-05-10",
+    "precio": "50000",
+    "servicio": "6619b2bcfea86873d079017f"
+  }
+]
