@@ -26,12 +26,12 @@ app.listen(process.env.PORT, () => {
     console.log('Servidor en línea');
 })
 
-app.get("/usuarios", async (req, res) => {
-    encontrarUsuario = await modeloUsuario.find();
-    if (encontrarUsuario) {
-        res.status(200).send(encontrarUsuario);
-    }
-});
+// app.get("/usuarios", async (req, res) => {
+//     encontrarUsuario = await modeloUsuario.find();
+//     if (encontrarUsuario) {
+//         res.status(200).send(encontrarUsuario);
+//     }
+// });
 
 app.get("/citas", async (req, res) => {
     encontrarCitas = await modeloCita.find();
@@ -63,3 +63,28 @@ app.post('/productos', async (req, res) => {
     } else
         res.status(404).json({ "mensaje": "Se presentó un error" })
 });
+
+app.post('/usuario', async (req, res) => {
+    let usuario = new modeloUsuario({
+        cedula: 9898988,
+        nombre: req.body.nombre_registro,
+        apellido: req.body.apellido_registro,
+        nombreUsuario: req.body.nombreUsuario_registro,
+        contrasena: req.body.contrasena_registro,
+        correo: req.body.correo_registro,
+        rol: req.body.rol_registro
+    });
+    let creacionUsuario = await modeloUsuario.create(usuario);
+    if (creacionUsuario) {
+        let titulo = '+Cotitas - Usuarios';
+        let listadoUsuarios = await modeloUsuario.find();
+        res.locals.successMessage = 'Usuario registrado exitosamente';
+        res.render('pages/listar_usuarios', {
+            "titulo": titulo,
+            "listadoProductos": listadoUsuarios
+        });
+        req.session.nombreUsuario = doc.nombreUsuario;
+    } else 
+        res.status(404).json({ "mensaje": "Se presentó un error" })
+
+})

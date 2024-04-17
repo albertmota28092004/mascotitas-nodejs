@@ -6,75 +6,39 @@
         </title>
 
         <% if (locals.successMessage) { %>
-            <div class="alert alert-success alert-dismissible fade show" role="alert" >
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <%= locals.successMessage %>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        <% } %>
+            <% } %>
 
-        <h1>
-            Productos
-        </h1>
+                <h1>
+                    Productos
+                </h1>
 
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="card mt-5">
-                        <div class="card-body">
-                            <h3 class="card-title text-center mb-4">Registro de Productos</h3>
-                            <form action="/productos" method="POST">
-                                <div class="mb-3">
-                                    <label for="referenciaProducto" class="form-label">Referencia:</label>
-                                    <input type="number" class="form-control" id="referenciaProducto"
-                                        placeholder="Referencia del producto" name="referenciaProducto" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nombreProducto" class="form-label">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombreProducto"
-                                        placeholder="Nombre del producto" name="nombreProducto" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="descripcionProducto" class="form-label">Descripción:</label>
-                                    <input type="text" class="form-control" id="descripcionProducto"
-                                        placeholder="Descripción" name="descripcionProducto" required maxlength="100">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precioProducto" class="form-label">Precio:</label>
-                                    <input type="number" class="form-control" id="precioProducto" placeholder="Precio"
-                                        name="precioProducto" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="stockProducto" class="form-label">Stock:</label>
-                                    <input type="number" class="form-control" id="stockProducto" placeholder="Stock"
-                                        name="stockProducto" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagenProducto" class="form-label">Imagen:</label>
-                                    <input type="text" class="form-control" id="imagenProducto" placeholder="Imagen"
-                                        name="imagenProducto" required>
-                                </div>
-                                <div class="text-center">
-                                    <input type="submit" class="btn btn-primary" value="Registrar" />
-                                </div>
+                <button class="btn btn-light m-2 crear_formulario" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><i class="bi bi-plus-lg" style="font-size: 23px;"></i></button>
+
+                <table class="tablas_modulos table table-striped">
+                    <thead class="encabezados_tablas">
+                        <th>#</th>
+                        <th>Referencia</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Imagen</th>
+                        <th>Habilitado</th>
+                        <th>Acciones</th>
+                        <th>
+                            <form class="d-flex" role="search" method="post" action="">
+                                <a href=""><i class="btn btn-dark bi bi-arrow-counterclockwise"
+                                        style="color: white;"></i></a>
+                                <input class="form-control buscar_tablas" type="search" placeholder="Buscar"
+                                    aria-label="Search" name="buscar" value="">
+                                <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
                             </form>
-                        </div>
-                    </div>
-                </div>
-
-
-                <table id="example" class="table table-striped" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Referencia</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Stock</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Habilitado</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
+                        </th>
                     </thead>
                     <tbody>
                         <% listadoProductos.forEach(p=> { %>
@@ -111,6 +75,7 @@
                                         <i class="bi bi-x-lg"></i>
                                     </a>
                                 </td>
+                                <td></td>
                             </tr>
                             <%})%>
                     </tbody>
@@ -118,6 +83,66 @@
 
                 <script>
                     let table = new DataTable('#example');
+                    $(document).ready(function() {
+                        $('#tabla-categorias').DataTable();
+                    });
                 </script>
-                
-    <%- include('../partials/footer'); %>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar un producto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row justify-content-center">
+                                    <div class="card-body" style="padding: 20px;">
+                                        <form action="/productos" method="POST">
+                                            <div class="mb-3">
+                                                <label for="referenciaProducto" class="form-label">Referencia:</label>
+                                                <input type="number" class="form-control" id="referenciaProducto"
+                                                    placeholder="Referencia del producto" name="referenciaProducto"
+                                                    required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="nombreProducto" class="form-label">Nombre:</label>
+                                                <input type="text" class="form-control" id="nombreProducto"
+                                                    placeholder="Nombre del producto" name="nombreProducto" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="descripcionProducto" class="form-label">Descripción:</label>
+                                                <input type="text" class="form-control" id="descripcionProducto"
+                                                    placeholder="Descripción" name="descripcionProducto" required
+                                                    maxlength="100">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="precioProducto" class="form-label">Precio:</label>
+                                                <input type="number" class="form-control" id="precioProducto"
+                                                    placeholder="Precio" name="precioProducto" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="stockProducto" class="form-label">Stock:</label>
+                                                <input type="number" class="form-control" id="stockProducto"
+                                                    placeholder="Stock" name="stockProducto" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="imagenProducto" class="form-label">Imagen:</label>
+                                                <input type="text" class="form-control" id="imagenProducto"
+                                                    placeholder="Imagen" name="imagenProducto" required>
+                                            </div>
+                                            <div class="text-center">
+                                                <input type="submit" class="btn btn-primary" value="Registrar" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <%- include('../partials/footer'); %>

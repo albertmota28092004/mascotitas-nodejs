@@ -1,0 +1,71 @@
+<%- include('../partials/encabezado'); %>
+
+        <a href="/">
+            <img id="logo" src="img/logo_mascotitas_morado.png" alt="" height="50px" width="200px">
+        </a>
+
+        <main>
+            <div class="contenedor__todo">
+                <div class="caja__trasera">
+                    <div class="caja__trasera-login">
+                        <h3>¿Ya tienes una cuenta?</h3>
+                        <p>Inicia sesión para entrar en la página.</p>
+                        <button id="btn__iniciar-sesion" class="btn">Iniciar sesión</button>
+                    </div>
+                    <div class="caja__trasera-register">
+                        <h3>¿Aún no tienes una cuenta?</h3>
+                        <p>Regístrate para que puedas iniciar sesión.</p>
+                        <button id="btn__registrarse" class="btn">Registrarse</button>
+                    </div>
+                </div>
+                <!--Formulario de login y registro-->
+                <div class="contenedor__login-register">
+                    <!--Login-->
+                    <form action="/iniciar_sesion" method="post" class="formulario__login">
+                        <h2>Iniciar sesión</h2>
+                        <input id="usuario" type="text" placeholder="Nombre de usuario" name="nick" required>
+                        <input type="password" id="contrasenaInicio" placeholder="Contraseña" name="password" required>
+                        <button type="button"
+                            style="position: absolute; display: inline; margin-top: -43px; margin-left: 270px; background-color: transparent; color: black;"
+                            id="btnMostrarContrasenaInicio" onclick="toggleMostrarContrasenaInicio()">
+                            <span id="iconoMostrarInicio" class="bi bi-eye-fill"></span>
+                            <span id="iconoOcultarInicio" class="bi bi-eye-slash-fill"></span>
+                        </button>
+                        <a href="/" class="btn recuperar_contrasena_boton"
+                            style="color: #8F82B7 !important; margin-left: -12px !important;">¿Has olvidado tu
+                            contraseña?</a>
+                        <button class="entrar" type="submit" onclick="validarUsuario()" class="btn">Entrar</button>
+                    </form>
+                    <!--Registro-->
+                    <form action="/registrar_usuario" class="formulario__register" method="post">
+                        <h2>Registrarse</h2>
+                        <input type="number" placeholder="Cédula" name="cedula_registro" id="cedula_registro" required>
+                        <input type="text" placeholder="Nombre" name="nombre_registro" id="nombre_registro" required>
+                        <input type="text" placeholder="Apellido" name="apellido_registro" id="apellido_registro" required>
+                        <input type="text" placeholder="Correo electrónico" name="correo_registro" id="correo_registro" required>
+                        <input type="text" placeholder="Usuario" name="nombreUsuario_registro" id="nombreUsuario_registro" required>
+                        <input type="password" id="contrasenaRegistro" placeholder="Contraseña" name="contrasena_registro" id="contrasena_registro" required>
+                        <button type="button"
+                            style="position: absolute; display: inline; margin-top: -43px; margin-left: 270px; background-color: transparent; color: black;"
+                            id="btnMostrarContrasenaRegistro" onclick="toggleMostrarContrasenaRegistro()">
+                            <span id="iconoMostrarRegistro" class="bi bi-eye-fill"></span>
+                            <span id="iconoOcultarRegistro" class="bi bi-eye-slash-fill"></span>
+                        </button>
+                        <input type="password" id="confirmarContrasena" placeholder="Confirmar contraseña" required>
+                        <button type="button"
+                            style="position: absolute; display: inline; margin-top: -43px; margin-left: 270px; background-color: transparent; color: black;"
+                            id="btnMostrarConfirmarContrasena" onclick="toggleMostrarConfirmarContrasena()">
+                            <span id="iconoMostrarConfirmar" class="bi bi-eye-fill"></span>
+                            <span id="iconoOcultarConfirmar" class="bi bi-eye-slash-fill"></span>
+                        </button>
+                        <select id="cars" name="rol_registro" id="rol_registro">
+                            <option>Administrador</option>
+                            <option>Empleado</option>
+                            <option>Usuario</option>
+                        </select>
+                        <input type="submit" class="registrarse" onclick="validarContrasena()" class="btn" value="Registrarse"/>
+                    </form>
+                </div>
+            </div>
+        </main>
+<%- include('../partials/footer'); %>

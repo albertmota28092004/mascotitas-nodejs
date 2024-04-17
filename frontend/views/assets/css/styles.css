@@ -15,16 +15,17 @@
 /*------------------------Inicio-----------------------*/
 
 #hero {
-    background: linear-gradient(#00000081, #00000076), url(img/fondo.png);
-    background-position: center;
-    background-size: cover;
+    background: linear-gradient(#00000081, #00000076), url(../img/banner_index_principal.png) !important;
+    background-position: center !important;
+    background-size: cover !important;
 }
+
 
 #contact:after {
     content: "";
     width: 100%;
     height: 70%;
-    background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.438)), url(img/contador.jpg);
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.438)), url(img/contador.jpg) !important;
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -35,7 +36,7 @@
 
 
 #counter {
-    background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.438)), url(img/contador.jpg);
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.438)), url(img/contador.jpg) !important;
     background-position: center;
     background-size: cover;
 }
@@ -120,12 +121,6 @@ a:hover {
     color: white;
 }
 
-#hero {
-    background: linear-gradient(#00000081, #00000076), url(img/fondo.png);
-    background-position: center;
-    background-size: cover;
-
-}
 
 /* SECCION DE TITULO */
 
@@ -336,3 +331,99 @@ a:hover {
 .testimonios {
     background-color: #8f82b6 !important;
 }
+
+.botones_usuario {
+    margin-top: 10px;
+    background-color: #8F82B7 !important;
+    border: 2px solid transparent !important;
+    border-radius: 50px !important;
+    font-size: 10px !important;
+    margin-left: 10px;
+    width: 120px;
+    height: 25px;
+    text-align: center;
+    padding: 4px 10px;
+}
+
+.menu_usuario {
+    border: 2px solid black !important;
+    padding: 10px !important;
+    border-radius: 40px 0px 40px 40px !important;
+    margin-top: 70px !important;
+}
+
+.logo_navbar {
+    margin-left: -90px;
+}
+
+.encabezados_tablas th {
+    background-color: #8F82B7 !important;
+    color: white !important;
+    padding: -50px !important;
+}
+
+.crear_formulario {
+    border: 2px solid #000000 !important;
+    border-radius: 50px !important;
+    box-shadow: 0 0 10px gray;
+}
+
+.formulario_contenedor {
+    padding: 30px;
+    background-color: #8F82B7;
+    width: 600px;
+    margin-left: 30%;
+    border-radius: 50px;
+    box-shadow: 0 0 20px gray;
+}
+
+.label_formularios {
+    color: white
+}
+
+.input_formularios {
+    width: 500px !important;
+}
+
+.enviar_formulario {
+    background-color: #FFFFFF !important;
+    border: 2px solid transparent !important;
+    color: #8F82B7 !important;
+}
+
+.enviar_formulario:hover {
+    background-color: #c8c8c8 !important;
+}
+
+.iconos_navbar {
+    justify-content: space-between !important;
+    text-align: center;
+    margin-left: 120px;
+}
+
+.iconos_navbar li {
+    margin-left: 60px;
+}
+
+#navbarNav {
+    position: absolute;
+}
+
+.modulos_navbar {
+    position: relative;
+    font-size: 40px !important;
+    transition: font-size 0.4s ease !important;
+}
+
+.modulos_navbar:hover {
+    font-size: 60px !important;
+}
+
+.modulos_navbar:hover h6 {
+    transition: none;
+}
+
+nav {
+    height: 100px !important;
+}
+

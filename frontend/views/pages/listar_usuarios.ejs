@@ -1,0 +1,153 @@
+<%- include('../partials/encabezado'); %>
+    <%- include('../partials/navbar'); %>
+
+        <title>
+            <%=titulo %>
+        </title>
+
+        <% if (locals.successMessage) { %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= locals.successMessage %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% } %>
+
+                <h1>
+                    Productos
+                </h1>
+
+                <button class="btn btn-light m-2 crear_formulario" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><i class="bi bi-plus-lg" style="font-size: 23px;"></i></button>
+
+                <table class="tablas_modulos table table-striped">
+                    <thead class="encabezados_tablas">
+                        <th>#</th>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo electrónico</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                        <th>
+                            <form class="d-flex" role="search" method="post" action="">
+                                <a href=""><i class="btn btn-dark bi bi-arrow-counterclockwise"
+                                        style="color: white;"></i></a>
+                                <input class="form-control buscar_tablas" type="search" placeholder="Buscar"
+                                    aria-label="Search" name="buscar" value="">
+                                <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
+                            </form>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <% listadoUsuarios.forEach(u=> { %>
+                            <tr>
+                                <td>
+                                    <%= u._id %>
+                                </td>
+                                <td>
+                                    <%= u.cedula %>
+                                </td>
+                                <td>
+                                    <%= u.nombre %>
+                                </td>
+                                <td>
+                                    <%= u.apellido %>
+                                </td>
+                                <td>
+                                    <%= u.correo %>
+                                </td>
+                                <td>
+                                    <%= u.nombreUsuario %>
+                                </td>
+                                <td>
+                                    <%= u.contrasena %>
+                                </td>
+                                <td>
+                                    <%= u.rol %>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger">
+                                        <i class="bi bi-x-lg"></i>
+                                    </a>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+                </table>
+
+                <script>
+                    let table = new DataTable('#example');
+                    $(document).ready(function() {
+                        $('#tabla-categorias').DataTable();
+                    });
+                </script>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar un producto</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row justify-content-center">
+                                    <div class="card-body" style="padding: 20px;">
+                                        <form action="/registrar_usuario" method="POST">
+                                            <div class="mb-3">
+                                                <label for="cedulaUsuario" class="form-label">Cédula:</label>
+                                                <input type="number" class="form-control" id="cedulaUsuario"
+                                                    placeholder="Cédula del usuario" name="cedulaUsuario"
+                                                    required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="nombreUsuario" class="form-label">Nombre:</label>
+                                                <input type="text" class="form-control" id="nombreUsuario"
+                                                    placeholder="Nombre del usuario" name="nombreUsuario" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="apellidoUsuario" class="form-label">Apellido:</label>
+                                                <input type="text" class="form-control" id="apellidoUsuario"
+                                                    placeholder="Apellido" name="apellidoUsuario" required
+                                                    maxlength="100">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="correoUsuario" class="form-label">Correo:</label>
+                                                <input type="text" class="form-control" id="correoUsuario"
+                                                    placeholder="Correo" name="correoUsuario" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="nombreUsuarioUsuario" class="form-label">Nombre de Usuario:</label>
+                                                <input type="text" class="form-control" id="nombreUsuarioUsuario"
+                                                    placeholder="Nombre de usuario" name="nombreUsuarioUsuario" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="contrasenaUsuario" class="form-label">Contraseña:</label>
+                                                <input type="text" class="form-control" id="contrasenaUsuario"
+                                                    placeholder="Contraseña" name="contrasenaUsuario" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="rolUsuario" class="form-label">Rol:</label>
+                                                <input type="text" class="form-control" id="rolUsuario"
+                                                    placeholder="Rol" name="rolUsuario" required>
+                                            </div>
+                                            <div class="text-center">
+                                                <input type="submit" class="btn btn-primary" value="Registrar" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <%- include('../partials/footer'); %>
